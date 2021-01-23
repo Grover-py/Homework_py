@@ -9,8 +9,8 @@ num_3 = int(input('Введите третье число: '))
 
 
 def my_func(n_1, n_2, n_3):
-    my_list = sorted([n_1 + n_2, n_1 + n_3, n_2 + n_3])
-    big_sum = my_list[2]
+    my_list = sorted([n_1, n_2, n_3])
+    big_sum = my_list[2] + my_list[1]
     return big_sum
 
 

@@ -6,16 +6,16 @@
 нескольких чисел, то вначале нужно добавить сумму этих чисел к полученной ранее сумме и после этого завершить программу.
 '''
 
-exit = 0
+exit = True
 sum_finish = 0
 
-while exit != 1:
+while exit != False:
     num = input('Введите числе через пробел, для выхода введите "Q": ').split()
     sum = 0
 
     for el in range(len(num)):
         if num[el] == 'Q':
-            exit = 1
+            exit = False
         else:
             sum = sum + int(num[el])
     sum_finish += sum

@@ -9,9 +9,9 @@ def calc(x, y):
     try:
         amount = int(x) / int(y)
     except ValueError:
-        return 'Ошибка. Не корректное число!'
+        return None
     except ZeroDivisionError:
-        return 'Ошибка. Делить на 0 нельзя'
+        return None
 
     return amount
 
