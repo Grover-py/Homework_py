@@ -1,19 +1,8 @@
-'''
-Реализовать функцию, принимающую два числа (позиционные аргументы) и выполняющую их деление.
-Числа запрашивать у пользователя, предусмотреть обработку ситуации деления на ноль.
-'''
+from sys import argv
 
-numerator = input("Введите числитель: ")
-denominator = input("Введите знаменатель: ")
-def calc(x, y):
-    try:
-        amount = int(x) / int(y)
-    except ValueError:
-        return None
-    except ZeroDivisionError:
-        return None
-
-    return amount
-
-
-print(calc(numerator, denominator))
+skript_name, name, work_h, many_h, prize = argv
+try:
+    bounty = int(work_h) * float(many_h) + int(prize)
+    print(f'{name} заработал: {int(bounty)}')
+except:
+    print('Ошибка')
