@@ -1,6 +1,13 @@
+from translate import Translator
+translator = Translator(to_lang="ru")
 
-my_list = [2, 2, 2, 7, 23, 1, 44, 44, 3, 2, 10, 7, 4, 11]
+my_file_in = open('txt_for_task_4.txt', mode = 'r', encoding = 'ANSI')
+my_file_out = open('txt_for_task_4_1.txt', mode = 'w', encoding = 'ANSI')
 
-finish_generator = (el for el in my_list if list.count(my_list, el) == 1)
+for el in my_file_in.readlines():
+    data_el = el.split()
+    write_el = f'{str(translator.translate(data_el[0]))} {str(data_el[1])} {str(data_el[2])} \n'
+    my_file_out.write(write_el)
 
-print(list(finish_generator))
+my_file_out.close()
+my_file_in.close()
