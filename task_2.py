@@ -1,6 +1,13 @@
+my_file = open('txt_for_task_2.txt', mode = 'r',encoding = 'ANSI')
 
-my_list = [300, 2, 12, 44, 1, 1, 4, 10, 7, 1, 78, 123, 55]
+content = my_file.read()
+content_lowercase = content.split('\n')
+print(f'Строк в текстовом файле: {len(content_lowercase)}')
 
-finish_list = (my_list[el+1] for el in range(len(my_list)-1) if my_list[el+1] > my_list[el])
+n = 1
+for el in content_lowercase:
+    number_of_words = len(el.split())
+    print(f'Слов в строке № {n}: {number_of_words} ')
+    n += 1
 
-print(list(finish_list))
+my_file.close()
