@@ -1,11 +1,20 @@
-my_file = open('txt_for_task_1.txt', 'w')
-inp = input('Введи чё нить: ')
+import time
+class TrafficLight:
+    __color = 'red'
 
-while True:
-    if inp == '\n' or inp == '':
-        break
-    else:
-        my_file.write(inp)
-        inp = '\n' + input('Введи чё нить: ')
+    def running(self):
+        n = 0
+        while n != 3:
+            TrafficLight.__color = 'red'
+            print(TrafficLight.__color)
+            time.sleep(7)
+            TrafficLight.__color = 'yellow'
+            print(TrafficLight.__color)
+            time.sleep(2)
+            TrafficLight.__color = 'green'
+            print(TrafficLight.__color)
+            time.sleep(4)
+            n += 1
 
-my_file.close()
+t = TrafficLight
+t.running('')

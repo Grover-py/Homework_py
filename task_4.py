@@ -1,13 +1,51 @@
-from translate import Translator
-translator = Translator(to_lang="ru")
+class Car:
+    def __init__(self, speed, color, name, is_police):
+        self.speed = int(speed)
+        self.color = color
+        self.name = name
+        self.is_police = bool(is_police)
 
-my_file_in = open('txt_for_task_4.txt', mode = 'r', encoding = 'ANSI')
-my_file_out = open('txt_for_task_4_1.txt', mode = 'w', encoding = 'ANSI')
+    def go(self):
+        return f'{self.name} - поехала'
 
-for el in my_file_in.readlines():
-    data_el = el.split()
-    write_el = f'{str(translator.translate(data_el[0]))} {str(data_el[1])} {str(data_el[2])} \n'
-    my_file_out.write(write_el)
+    def stop(self):
+        return f'{self.name} - остановилась'
 
-my_file_out.close()
-my_file_in.close()
+    def turn(self, direction):
+        return f'{self.name} - повернула, направление поворота: {direction}'
+
+    def show_speed(self):
+        return f'Текущая скорость: {self.speed}'
+
+
+class TownCar(Car):
+    def show_speed(self):
+        if self.speed > 60:
+            return 'Превышает скорость'
+        else:
+            return 'Скорость в норме'
+
+class SportCar(Car):
+    pass
+
+class WorkCar(Car):
+    def show_speed(self):
+        if self.speed > 40:
+            return 'Превышает скорость'
+        else:
+            return 'Скорость в норме'
+
+class PoliceCar(Car):
+    pass
+
+work_car = WorkCar(100, 'black', 'camry', 0)
+print(work_car.name, work_car.color, work_car.is_police, work_car.show_speed())
+
+town_car = TownCar(10, 'green', 'audi', 0)
+print(town_car.name, town_car.color, town_car.is_police, town_car.show_speed())
+
+sport_car = SportCar(100, 'blue', 'bmw', 0)
+print(sport_car.name, sport_car.color, sport_car.is_police, sport_car.show_speed())
+
+police_car = PoliceCar(90, 'hard blue', 'ford', 1)
+print(police_car.name, police_car.color, police_car.is_police, police_car.show_speed())
