@@ -1,21 +1,28 @@
-my_file = open('txt_for_task_5.txt', mode = 'w', encoding = 'ANSI')
+class Stationery:
+    def __init__(self, title):
+        self.title = title
 
-num = ''
+    def draw(self):
+        return f'Запуск отрисовки.'
 
-while num != 'Q':
-    num = input('Введите число, для выхода введите "Q": ')
-    try:
-        num = int(num)
-        data_write = str(num) + ' '
-        my_file.write(data_write)
-        my_file.close()
-        my_file = open('txt_for_task_5.txt', mode='r+', encoding='ANSI')
-        content = my_file.read()
-        x = 0
-        for el in content.split():
-            x += int(el)
-        print(f'Сумма чисел в файле: {x}')
-    except:
-        print('Вы ввели не число, попробуйте ещё раз.')
 
-my_file.close()
+class Pen(Stationery):
+    def draw(self):
+        return f'Запуск отрисовки "{self.title}" ручкой'
+
+
+class Pencil(Stationery):
+    def draw(self):
+        return f'Запуск отрисовки "{self.title}" карандашём'
+
+
+class Handle(Stationery):
+    def draw(self):
+        return f'Запуск отрисовки "{self.title}" маркером'
+
+pen = Pen('Картина')
+print(pen.draw())
+pencil = Pencil('Картина')
+print(pencil.draw())
+handle = Handle('Картина')
+print(handle.draw())

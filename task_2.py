@@ -1,13 +1,14 @@
-my_file = open('txt_for_task_2.txt', mode = 'r',encoding = 'ANSI')
+class Road:
 
-content = my_file.read()
-content_lowercase = content.split('\n')
-print(f'Строк в текстовом файле: {len(content_lowercase)}')
+    def __init__(self, length, width):
+        self._length = length
+        self._width = width
+        self.weight = 0.025
+        self.height = 5
 
-n = 1
-for el in content_lowercase:
-    number_of_words = len(el.split())
-    print(f'Слов в строке № {n}: {number_of_words} ')
-    n += 1
+    def calc(self):
+        finish_sum = self._length * self._width * self.weight * self.height
+        print(f'Потребуется {int(finish_sum)} тонн асфальта')
 
-my_file.close()
+x = Road(5000, 20)
+x.calc()
