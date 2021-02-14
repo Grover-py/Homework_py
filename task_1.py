@@ -1,24 +1,30 @@
-
-class Matrix():
-    def __init__(self, my_list):
-        self.my_list = my_list
-
-    def __str__(self):
-        for el in self.my_list:
-            s = ''
-            for i in el:
-                s = f'{str(s)}   {str(i)}'
-            print(s)
-        return ''
-
-    def __add__(self, other):
-        for el in range(len(self.my_list)):
-            for i in range(len(other.my_list[el])):
-                self.my_list[el][i] = self.my_list[el][i] + other.my_list[el][i]
-        return Matrix.__str__(self)
+class Data:
+    def __init__(self, to_data):
+        self.to_data = str(to_data)
 
 
-matrix = Matrix([[1, 2, 3, 7], [2, 5, 7, 1], [7, 6, 8, 4]])
-print(matrix)
-matrix_2 = Matrix([[4, 1, 5, 2], [1, 2, 1, 7], [15, 4, -8, 0]])
-print(matrix.__add__(matrix_2))
+    @classmethod
+    def data_meaning(cls, to_data):
+        x = to_data.split(':')
+        return int(x[0]), int(x[1]), int(x[2])
+
+    @staticmethod
+    def valid(d, m, y):
+        if 0 < d < 32:
+            if 0 < m < 13:
+                if 0 <= y < 2022:
+                    return 'Такая дата существует'
+                else:
+                    return 'Неверный год'
+            else:
+                return 'Неверный месяц'
+        else:
+            return 'Неверный день'
+
+
+my_data = Data.data_meaning('10:11:2015')
+print(my_data)
+print(Data.valid(10, 12, 2015))
+print(Data.valid(32, 12, 2015))
+print(Data.valid(10, 13, 2015))
+print(Data.valid(10, 12, 2035))
