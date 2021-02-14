@@ -13,5 +13,4 @@ class List_of_numbers:
     print(my_list)
 
 
-
 x = List_of_numbers
